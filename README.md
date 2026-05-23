@@ -199,12 +199,11 @@ Choices are also persisted automatically to `localStorage` under the key `you-ch
 ## File structure
 
 ```
+README.md          This file
 you-chose-this/
 ├── index.html     Game — fully self-contained, works as file:// or via server
 ├── server.js      Node.js HTTP + WebSocket bridge (Pi deployment)
-├── joystick.js    GPIO listener — runs on Raspberry Pi
-└── README.md      This file
-
+└── joystick.js    GPIO listener — runs on Raspberry Pi
 artwork/           Folder for exported artwork PNGs and choices JSON files
 ```
 
