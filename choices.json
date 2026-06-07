@@ -1,0 +1,42 @@
+[
+  {
+    "level": 1,
+    "word": "love",
+    "category": "Love",
+    "color": "#FBEAF0",
+    "reactionTimeMs": 9960,
+    "timestamp": "2026-06-03T19:28:00.758Z"
+  },
+  {
+    "level": 2,
+    "word": "passion",
+    "category": "Love",
+    "color": "#F4C0D1",
+    "reactionTimeMs": 19407,
+    "timestamp": "2026-06-03T19:28:28.223Z"
+  },
+  {
+    "level": 3,
+    "word": "best friend",
+    "category": "Love",
+    "color": "#ED93B1",
+    "reactionTimeMs": 16562,
+    "timestamp": "2026-06-03T19:28:52.848Z"
+  },
+  {
+    "level": 4,
+    "word": "starting from scratch",
+    "category": "Career",
+    "color": "#BA7517",
+    "reactionTimeMs": 36795,
+    "timestamp": "2026-06-03T19:29:37.700Z"
+  },
+  {
+    "level": 5,
+    "word": "the moment you knew",
+    "category": "Love",
+    "color": "#993556",
+    "reactionTimeMs": 32256,
+    "timestamp": "2026-06-03T19:30:18.016Z"
+  }
+]
