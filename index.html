@@ -27,7 +27,7 @@
     #level-intro { background: var(--bg); z-index: 90; opacity: 0; pointer-events: none; transition: opacity 0.6s ease; flex-direction: column; gap: 0; }
     #lvl-label { font-family: 'DM Sans', sans-serif; font-size: 0.67rem; letter-spacing: 0.44em; text-transform: uppercase; opacity: 0.4; margin-bottom: 0.85rem; transition: opacity 0.45s ease; }
     #lvl-title { font-size: clamp(1.9rem, 5vw, 4rem); font-weight: 300; font-style: italic; transition: opacity 0.45s ease; }
-    #countdown-num { font-size: clamp(7rem,18vw,14rem); font-weight: 300; font-family: 'Cormorant Garamond', serif; opacity: 0; transition: opacity 0.12s ease; line-height: 1; color: var(--text); margin-top: 0.5rem; }
+    #countdown-num { font-size: clamp(5rem,13vw,10rem); font-weight: 300; font-family: 'Cormorant Garamond', serif; opacity: 0; transition: opacity 0.12s ease; line-height: 1; color: var(--text); margin-top: 1.4rem; }
     #game-area { position: fixed; inset: 0; overflow: hidden; z-index: 10; }
     #level-indicator { position: fixed; top: 28px; left: 36px; font-family: 'DM Sans', sans-serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0; z-index: 20; transition: opacity 0.8s ease; }
     #level-timer { position: fixed; top: 22px; right: 36px; font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem,5vw,3.4rem); font-weight: 300; letter-spacing: 0.04em; opacity: 0; z-index: 20; transition: opacity 0.8s ease, color 0.35s ease; line-height: 1; font-variant-numeric: tabular-nums; }
@@ -48,6 +48,32 @@
     .btn:hover { border-color: rgba(255,255,255,0.6); opacity: 1; }
     #fade { position: fixed; inset: 0; background: var(--bg); z-index: 170; pointer-events: none; opacity: 0; transition: opacity 0.85s ease; }
     #fade.on { opacity: 1; }
+    #index-overlay { position: fixed; inset: 0; z-index: 310; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.32s ease; }
+    #index-overlay.show { opacity: 1; pointer-events: all; }
+    #index-card { background: #0e0e10; border: 1px solid rgba(245,240,235,0.11); max-width: 660px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 2.4rem 2.6rem 2rem; scrollbar-width: thin; scrollbar-color: rgba(245,240,235,0.12) transparent; }
+    #index-card::-webkit-scrollbar { width: 4px; }
+    #index-card::-webkit-scrollbar-track { background: transparent; }
+    #index-card::-webkit-scrollbar-thumb { background: rgba(245,240,235,0.14); border-radius: 2px; }
+    #index-hd { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 2rem; gap: 1rem; }
+    #index-hd h2 { font-size: clamp(1.55rem,3.5vw,2.1rem); font-weight: 300; font-style: italic; letter-spacing: 0.04em; }
+    #index-hd p { font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-weight: 300; opacity: 0.4; margin-top: 0.35rem; letter-spacing: 0.015em; line-height: 1.6; }
+    #index-close { background: transparent; border: none; color: var(--text); font-size: 1.3rem; opacity: 0.35; cursor: pointer; padding: 0 0.2rem; line-height: 1; transition: opacity 0.18s; flex-shrink: 0; margin-top: -0.15rem; }
+    #index-close:hover { opacity: 0.85; }
+    .ix-row { padding: 1.1rem 0; border-top: 1px solid rgba(245,240,235,0.065); }
+    .ix-row:last-of-type { border-bottom: 1px solid rgba(245,240,235,0.065); }
+    .ix-top { display: flex; align-items: flex-start; gap: 1rem; }
+    .ix-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .ix-meta { flex: 1; min-width: 0; }
+    .ix-lvl { font-family: 'DM Sans', sans-serif; font-size: 0.58rem; letter-spacing: 0.36em; text-transform: uppercase; opacity: 0.35; margin-bottom: 0.22rem; }
+    .ix-word { font-size: clamp(1rem,2.5vw,1.3rem); font-weight: 300; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .ix-cat { font-family: 'DM Sans', sans-serif; font-size: 0.67rem; font-weight: 300; opacity: 0.38; margin-top: 0.12rem; }
+    .ix-time { text-align: right; flex-shrink: 0; }
+    .ix-time-val { font-size: 1.05rem; font-weight: 300; letter-spacing: 0.05em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .ix-speed { font-family: 'DM Sans', sans-serif; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.36; margin-top: 0.14rem; }
+    .ix-bloom { font-family: 'DM Sans', sans-serif; font-size: 0.63rem; font-weight: 300; opacity: 0.32; margin-top: 0.28rem; }
+    .ix-bar { height: 2px; background: rgba(245,240,235,0.07); border-radius: 1px; margin-top: 0.75rem; overflow: hidden; }
+    .ix-bar-fill { height: 100%; border-radius: 1px; opacity: 0.72; }
+    #index-ft { margin-top: 2rem; display: flex; justify-content: flex-end; }
   </style>
 </head>
 <body>
@@ -91,9 +117,25 @@
   <div id="reveal-art-wrap"><canvas id="reveal-canvas"></canvas></div>
   <p id="reveal-quote">This is what your choices look like.</p>
   <div id="reveal-actions">
-    <button class="btn" id="btn-restart">Restart</button>
+    <button class="btn" id="btn-restart">Play Again</button>
     <button class="btn" id="btn-data">Export Data</button>
     <button class="btn" id="btn-art">Save Artwork</button>
+  </div>
+</div>
+
+<div id="index-overlay" aria-modal="true" role="dialog" aria-label="Your Choices">
+  <div id="index-card">
+    <div id="index-hd">
+      <div>
+        <h2>Your Choices</h2>
+        <p>What you chose, how quickly, and how each decision shaped the canvas.</p>
+      </div>
+      <button id="index-close" aria-label="Close">&#x2715;</button>
+    </div>
+    <div id="index-body"></div>
+    <div id="index-ft">
+      <button class="btn" id="btn-export-json">Export JSON</button>
+    </div>
   </div>
 </div>
 
@@ -764,6 +806,24 @@ function beginRevealSequence() {
   },2500);
 }
 
+// ─── RESTART ──────────────────────────────────────────────────
+function restartGame() {
+  $fade.classList.add('on');
+  setTimeout(()=>{
+    $reveal.classList.remove('show');
+    $revealVeil.classList.remove('on');
+    hideIndexCard();
+    levelIdx=0; choices=[];
+    resetArtwork();
+    $landing.style.display='flex';
+    $landing.style.opacity='0';
+    $landing.style.pointerEvents='none';
+    $fade.classList.remove('on');
+    setTimeout(()=>showLanding(), 80);
+  },850);
+}
+document.getElementById('btn-restart').addEventListener('click', restartGame);
+
 // ─── SCREENS ──────────────────────────────────────────────────
 function showLanding() {
   gameState='landing';
@@ -786,11 +846,12 @@ function showLevelIntro(idx) {
   $lvlTitle.textContent=LEVELS[idx].name;
   $lvlLabel.style.opacity='1'; $lvlTitle.style.opacity='1'; $cntNum.style.opacity='0';
   $lvlIntro.style.opacity='1'; $lvlIntro.style.pointerEvents='all';
-  setTimeout(()=>runCountdown(3,()=>{
-    $lvlLabel.style.opacity='0'; $lvlTitle.style.opacity='0';
-    $lvlIntro.style.opacity='0'; $lvlIntro.style.pointerEvents='none';
-    setTimeout(()=>startWordFlow(idx),400);
-  }),500);
+  setTimeout(()=>{
+    runCountdown(3,()=>{
+      $lvlIntro.style.opacity='0'; $lvlIntro.style.pointerEvents='none';
+      setTimeout(()=>startWordFlow(idx),400);
+    });
+  },1800);
 }
 function runCountdown(from, callback) {
   let n=from;
@@ -818,23 +879,68 @@ function startWordFlow(idx) {
   });
 }
 
+// ─── INDEX CARD ───────────────────────────────────────────────
+const $indexOverlay  = document.getElementById('index-overlay');
+const $indexBody     = document.getElementById('index-body');
+const $indexClose    = document.getElementById('index-close');
+const $btnExportJson = document.getElementById('btn-export-json');
+
+function speedLabel(ms) {
+  if (ms < 1500)  return 'immediate';
+  if (ms < 3500)  return 'quick';
+  if (ms < 7000)  return 'considered';
+  if (ms < 15000) return 'deliberate';
+  return 'slow';
+}
+function bloomNote(ms) {
+  if (ms < 1500)  return 'vivid · tight · high saturation';
+  if (ms < 3500)  return 'crisp · elevated saturation';
+  if (ms < 7000)  return 'clear · natural saturation';
+  if (ms < 15000) return 'soft · muted saturation';
+  return 'diffuse · wide bloom · low saturation';
+}
+
+function showIndexCard() {
+  $indexBody.innerHTML = '';
+  choices.forEach((c, i) => {
+    const pct = Math.min(100, (c.reactionTimeMs / LEVEL_DURATION_MS) * 100);
+    const secs = (c.reactionTimeMs / 1000).toFixed(1);
+    const row = document.createElement('div');
+    row.className = 'ix-row';
+    row.innerHTML = `
+      <div class="ix-top">
+        <div class="ix-dot" style="background:${c.color}"></div>
+        <div class="ix-meta">
+          <div class="ix-lvl">Level ${c.level} &nbsp;·&nbsp; ${LEVELS[i].name}</div>
+          <div class="ix-word">${c.word}</div>
+          <div class="ix-cat">${c.category}</div>
+          <div class="ix-bloom">${bloomNote(c.reactionTimeMs)}</div>
+        </div>
+        <div class="ix-time">
+          <div class="ix-time-val">${secs}s</div>
+          <div class="ix-speed">${speedLabel(c.reactionTimeMs)}</div>
+        </div>
+      </div>
+      <div class="ix-bar"><div class="ix-bar-fill" style="width:${pct}%;background:${c.color}"></div></div>
+    `;
+    $indexBody.appendChild(row);
+  });
+  $indexOverlay.classList.add('show');
+}
+
+function hideIndexCard() {
+  $indexOverlay.classList.remove('show');
+}
+
+$indexClose.addEventListener('click', hideIndexCard);
+$indexOverlay.addEventListener('click', e => { if (e.target === $indexOverlay) hideIndexCard(); });
+
 // ─── EXPORT ───────────────────────────────────────────────────
-document.getElementById('btn-restart').addEventListener('click',()=>{
-  $reveal.classList.remove('show');
-  $revealVeil.classList.remove('on');
-  $revCanvas.style.opacity='0';
-  $revealQuote.style.opacity='0';
-  $revealActs.style.opacity='0';
-  levelIdx=0; choices=[];
-  resetArtwork();
-  $landing.style.display='flex';
-  $landing.style.opacity='1';
-  $landing.style.pointerEvents='all';
-  gameState='landing';
-});
-document.getElementById('btn-data').addEventListener('click',()=>{
-  const blob=new Blob([JSON.stringify(choices,null,2)],{type:'application/json'});
-  Object.assign(document.createElement('a'),{href:URL.createObjectURL(blob),download:'choices.json'}).click();
+document.getElementById('btn-data').addEventListener('click', showIndexCard);
+
+$btnExportJson.addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(choices, null, 2)], { type: 'application/json' });
+  Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: 'choices.json' }).click();
 });
 document.getElementById('btn-art').addEventListener('click',()=>{
   $artCanvas.toBlob(blob=>{
@@ -845,6 +951,7 @@ document.getElementById('btn-art').addEventListener('click',()=>{
 
 // ─── INPUT ────────────────────────────────────────────────────
 document.addEventListener('keydown',e=>{
+  if (e.key==='Escape' && $indexOverlay.classList.contains('show')){ hideIndexCard(); return; }
   if (gameState==='landing'){hideLanding();return;}
   if (gameState==='playing'){
     switch(e.key){
