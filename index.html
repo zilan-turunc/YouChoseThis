@@ -146,40 +146,40 @@
 
 // ─── WORD DATA ────────────────────────────────────────────────
 const LEVELS = [
-  { name: "Abstract Ideals", categories: [
-    { name:"Love",         color:"#F2A7C3", words:["love","intimacy","devotion","tenderness"] },
-    { name:"Freedom",      color:"#7ECFB0", words:["freedom","courage","wonder","aliveness"] },
-    { name:"Career",       color:"#F5C97A", words:["ambition","success","purpose","discipline"] },
-    { name:"Spirituality", color:"#A89FE8", words:["faith","peace","gratitude","transcendence"] },
-    { name:"Knowledge",    color:"#80B8E8", words:["wisdom","truth","curiosity","understanding"] }
+  { name: "Simple Pleasures", categories: [
+    { name:"A", color:"#F2A7C3", words:["music", "movies"] },
+    { name:"B", color:"#7ECFB0", words:["traveling", "sports"] },
+    { name:"C", color:"#F5C97A", words:["your favorite hobby", "luxury"] },
+    { name:"D", color:"#A89FE8", words:["good food", "spirituality"] },
+    { name:"E", color:"#80B8E8", words:["social media", "solitude", "taking care of a pet"] }
   ]},
-  { name: "Domains of Life", categories: [
-    { name:"Love",         color:"#E8758A", words:["partnership","romance","passion","home"] },
-    { name:"Freedom",      color:"#4CB896", words:["travel","nature","movement","solitude"] },
-    { name:"Career",       color:"#E8A63A", words:["career","leadership","recognition","craft"] },
-    { name:"Spirituality", color:"#8B82D8", words:["ritual","prayer","belonging","devotion"] },
-    { name:"Knowledge",    color:"#5599D8", words:["learning","reading","discovery","mentorship"] }
+  { name: "What Matters Most", categories: [
+    { name:"A", color:"#E8758A", words:["partnership", "romance", "passion"] },
+    { name:"B", color:"#4CB896", words:["family", "best friend", "self love"] },
+    { name:"C", color:"#E8A63A", words:["career", "fame", "being remembered"] },
+    { name:"D", color:"#8B82D8", words:["religion", "belonging", "working for a good cause"] },
+    { name:"E", color:"#5599D8", words:["good health", "having a community", "a time machine"] }
   ]},
-  { name: "People & Relationships", categories: [
-    { name:"Love",         color:"#D45070", words:["partner","mother","best friend","child"] },
-    { name:"Freedom",      color:"#2A9E7A", words:["travel companion","a stranger you met abroad","the friend who dares you","your younger self"] },
-    { name:"Career",       color:"#D48820", words:["your mentor","your first boss","a collaborator","someone you admire"] },
-    { name:"Spirituality", color:"#6E64C8", words:["a spiritual guide","your grandmother","a community","an ancestor"] },
-    { name:"Knowledge",    color:"#3A7EC8", words:["a teacher who changed you","a book's author","a childhood curiosity","a conversation you remember"] }
+  { name: "Experiences & Feelings", categories: [
+    { name:"A", color:"#D45070", words:["the place you go to for comfort", "memories from your first love", "a gift you still cherish"] },
+    { name:"B", color:"#2A9E7A", words:["helping your loved ones", "feeling secure", "your childhood memories"] },
+    { name:"C", color:"#D48820", words:["earning something you worked hard for", "being trusted with something important"] },
+    { name:"D", color:"#6E64C8", words:["a ritual you still keep", "avoiding suffering"] },
+    { name:"E", color:"#3A7EC8", words:["understanding something for the first time", "childlike curiosity"] }
   ]},
-  { name: "Moments & Experiences", categories: [
-    { name:"Love",         color:"#B83055", words:["falling in love","being truly seen","saying I love you first","choosing to stay"] },
-    { name:"Freedom",      color:"#1A7A5A", words:["leaving everything behind","getting lost on purpose","a night under open sky","the first day somewhere new"] },
-    { name:"Career",       color:"#A86010", words:["earning something hard","a breakthrough moment","being trusted with something big","starting from scratch"] },
-    { name:"Spirituality", color:"#5248A8", words:["a moment of stillness","feeling held by something larger","forgiving someone","a moment of pure gratitude"] },
-    { name:"Knowledge",    color:"#2060A8", words:["understanding something for the first time","a book that changed how you see","being proven wrong and grateful for it","a question that stayed with you"] }
+  { name: "Moments & Turning Points", categories: [
+    { name:"A", color:"#B83055", words:["being truly understood", "pure gratitude", "a loss that reshaped you"] },
+    { name:"B", color:"#1A7A5A", words:["leaving everything behind", "starting from scratch", "a risk that paid off"] },
+    { name:"C", color:"#A86010", words:["having a sense of purpose", "a breakthrough moment"] },
+    { name:"D", color:"#5248A8", words:["feeling held by something larger", "living a long life"] },
+    { name:"E", color:"#2060A8", words:["a book that changed how you see"] }
   ]},
   { name: "Specific Memories", categories: [
-    { name:"Love",         color:"#8C2040", words:["your first kiss","a song that reminds you of them","the moment you knew","their handwriting"] },
-    { name:"Freedom",      color:"#0A5A3A", words:["a road you drove alone","a border you crossed","the best morning of a trip","a place only you know"] },
-    { name:"Career",       color:"#7A4000", words:["your first paycheck","the day you were hired","a work you're proud of","the moment you believed in yourself"] },
-    { name:"Spirituality", color:"#382888", words:["a childhood prayer","a ritual you still keep","a place where you felt at peace","a moment you felt guided"] },
-    { name:"Knowledge",    color:"#0A4080", words:["a teacher's sentence you still carry","the first book you loved","a discovery that thrilled you","your childhood pet"] }
+    { name:"A", color:"#8C2040", words:["a song that reminds you of them", "the moment you knew", "the one that got away"] },
+    { name:"B", color:"#0A5A3A", words:["a place only you know", "a place where you feel at home", "being forgiven"] },
+    { name:"C", color:"#7A4000", words:["a work you're proud of", "feeling at peace with who you are"] },
+    { name:"D", color:"#382888", words:["a sentence that stayed with you for years", "watching someone you love change for the better"] },
+    { name:"E", color:"#0A4080", words:["a discovery that thrilled you"] }
   ]}
 ];
 
@@ -570,8 +570,8 @@ function fontSizeFor(text) {
   if (l <= 4)  return 25;
   if (l <= 8)  return 21;
   if (l <= 14) return 17;
-  if (l <= 22) return 14;
-  return 12;
+  if (l <= 22) return 15;
+  return 14;
 }
 const _mc = document.createElement('canvas').getContext('2d');
 function measuredW(text, fontSize) {
