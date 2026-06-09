@@ -802,7 +802,7 @@ function beginRevealSequence() {
     $reveal.classList.add('show');
     requestAnimationFrame(()=>{ $revCanvas.style.opacity='1'; });
     setTimeout(()=>{ $revealQuote.style.opacity='1'; },2000);
-    setTimeout(()=>{ $revealActs.style.opacity='1'; },5000);
+    setTimeout(()=>{ $revealActs.style.opacity='1'; revealBtnIdx=0; revealNavHighlight(); },5000);
   },2500);
 }
 
@@ -964,6 +964,26 @@ document.addEventListener('keydown',e=>{
   }
 });
 
+// ─── REVEAL BUTTON NAV ────────────────────────────────────────
+const revealBtns = ['btn-restart', 'btn-data', 'btn-art'];
+let revealBtnIdx = 0;
+
+function revealNavHighlight() {
+  revealBtns.forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.style.borderColor = i === revealBtnIdx ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.2)';
+    el.style.opacity     = i === revealBtnIdx ? '1' : '0.6';
+  });
+}
+function revealNavMove(dir) {
+  if (dir === 'LEFT')  revealBtnIdx = (revealBtnIdx - 1 + revealBtns.length) % revealBtns.length;
+  if (dir === 'RIGHT') revealBtnIdx = (revealBtnIdx + 1) % revealBtns.length;
+  revealNavHighlight();
+}
+function revealNavSelect() {
+  document.getElementById(revealBtns[revealBtnIdx]).click();
+}
+
 // ─── WEBSOCKET BRIDGE ─────────────────────────────────────────
 (function connectWS(){
   function connect(){
@@ -972,6 +992,11 @@ document.addEventListener('keydown',e=>{
       ws.onmessage=evt=>{
         try{
           const {action}=JSON.parse(evt.data);
+          if (gameState === 'reveal') {
+            if (action==='LEFT'||action==='RIGHT') revealNavMove(action);
+            if (action==='SELECT'||action==='ANY') revealNavSelect();
+            return;
+          }
           if(action==='LEFT')  moveCursor('LEFT');
           if(action==='RIGHT') moveCursor('RIGHT');
           if(action==='UP')    moveCursor('UP');
