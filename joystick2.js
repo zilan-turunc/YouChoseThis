@@ -5,7 +5,7 @@ const { ReadlineParser } = require('@serialport/parser-readline');
 const WebSocket = require('ws');
 
 const WS_URL   = 'ws://localhost:3000/joystick';
-const SERIAL   = '/dev/cu.usbserial-10';
+const SERIAL   = '/dev/ttyUSB0';
 const BAUD     = 9600;
 
 let ws;

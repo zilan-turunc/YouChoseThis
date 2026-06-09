@@ -1,5 +1,5 @@
 /**
- * server.js — WebSocket bridge between joystick.js (Raspberry Pi GPIO)
+ * server.js — WebSocket bridge between joystick2.js (Raspberry Pi GPIO)
  * and the browser frontend (index.html).
  *
  * Usage:
